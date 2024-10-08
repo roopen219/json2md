@@ -2,13 +2,31 @@
   "name": "json2md",
   "version": "2.0.1",
   "description": "A JSON to Markdown converter.",
-  "main": "lib/index.js",
+  "main": "dist/json2md.min.js",
+  "browser": "dist/json2md.browser.min.js",
   "directories": {
     "example": "example",
     "test": "test"
   },
   "scripts": {
+    "build": "parcel build",
     "test": "node test"
+  },
+  "targets": {
+    "main": {
+      "source": "lib/index.js",
+      "distDir": "dist",
+      "context": "node",
+      "outputFormat": "commonjs",
+      "optimize": true
+    },
+    "browser": {
+      "source": "lib/index.js",
+      "distDir": "dist",
+      "context": "browser",
+      "includeNodeModules": true,
+      "optimize": true
+    }
   },
   "repository": {
     "type": "git",
@@ -42,10 +60,11 @@
     ]
   },
   "dependencies": {
-    "indento": "^1.1.13"
+    "indento": "1.1.13"
   },
   "devDependencies": {
-    "tester": "^1.4.5"
+    "tester": "1.4.5",
+    "parcel": "2.9.3"
   },
   "files": [
     "bin/",
